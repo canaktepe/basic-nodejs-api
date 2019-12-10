@@ -2,10 +2,10 @@
 
 basic nodeJS express api
 
-#install packages
+# install packages
 
 npm install
 
-#run project
+# run project
 
 npm start

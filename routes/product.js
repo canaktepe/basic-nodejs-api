@@ -5,6 +5,8 @@ var router = express.Router();
 
 let products = [];
 
+products.push(new productEntity(1,"test","desc"));
+
 router
     /* GET products page. */
     .get('/', function (req, res, next) {

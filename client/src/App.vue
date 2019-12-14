@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     fetchPosts() {
-      api().get('/api/products').then((result) => {
+      api().get('products').then((result) => {
         this.products = result.data;
       });
     },

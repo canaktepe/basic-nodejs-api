@@ -18,10 +18,12 @@ export default {
     this.fetchPosts();
   },
   methods: {
-    fetchPosts() {
-      api().get('products').then((result) => {
-        this.products = result.data;
-      });
+    async fetchPosts() {
+      await api()
+        .get('products')
+        .then((result) => {
+          this.products = result.data;
+        });
     },
   },
 };

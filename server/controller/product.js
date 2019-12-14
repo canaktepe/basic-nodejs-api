@@ -5,14 +5,14 @@ var router = express.Router();
 
 let products = [];
 
-products.push(new productEntity(1, "test", "desc"));
+products.push(new productEntity(1, "22", "desc"));
 
 router
   /* GET products page. */
-  .get("/", function(req, res, next) {
+  .get("/", async (req, res, next) => {
     res.status(200).json(products);
   })
-  .post("/", function(req, res, next) {
+  .post("/", async (req, res, next) => {
     var product = new productEntity(
       req.body.id,
       req.body.name,

@@ -1,18 +1,38 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="row">
+    <PointTable />
+    <div class="col-md-9">
+      <ThisWeekFixture />
+      <OurTeam />
+    </div>
+
+    <div v-for="(product,index) in products" :key="index">
+        {{product.name}}
+    </div>
   </div>
 </template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import productService from '@/services/productService';
+import PointTable from '@/components/home/PointTable.vue';
+import ThisWeekFixture from '@/components/home/ThisWeek.vue';
+import OurTeam from '@/components/OurTeam.vue';
 
 export default {
+  data() {
+    return {
+      products: [],
+    };
+  },
+  mounted() {
+    productService.get().then((response) => {
+      this.products = response;
+    });
+  },
   name: 'home',
   components: {
-    HelloWorld,
+    PointTable,
+    ThisWeekFixture,
+    OurTeam,
   },
 };
 </script>

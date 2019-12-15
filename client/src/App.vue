@@ -1,30 +1,20 @@
 <template>
-  <div class="about" id="app">
-    <ul v-if="products.length > 0">
-      <li v-for="(product,index) in products" :key="index">{{ product.name }}</li>
-    </ul>
+  <div id="app">
+    <Header/>
+    <div class="container-fluid">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 <script>
-import api from './services/api';
+import Header from './components/_shared/Header.vue';
+
+import '@/assets/global.css';
 
 export default {
-  data() {
-    return {
-      products: [],
-    };
-  },
-  created() {
-    this.fetchPosts();
-  },
-  methods: {
-    async fetchPosts() {
-      await api()
-        .get('products')
-        .then((result) => {
-          this.products = result.data;
-        });
-    },
+  name: 'App',
+  components: {
+    Header,
   },
 };
 </script>
